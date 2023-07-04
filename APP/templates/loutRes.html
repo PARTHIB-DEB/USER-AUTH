@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete account</title>
+    <title>Response</title>
     <style>
         .Banner{
             display: flex;
@@ -13,13 +13,12 @@
             font-weight: 800;
             font-size: xx-large;
             margin-top:5vw;
-            text-decoration: underline;
         }
 
-        .sout-btn-group{
+        .back-btn{
             display: flex;
-           justify-content: space-evenly;
-           margin-top: 4rem;
+            justify-content: center;
+            margin-top: 2.5rem;
         }
 
         .detail-submit-btn{
@@ -30,11 +29,9 @@
     </style>
 </head>
 <body>
-    <div class="Banner">Want to Delete Your account??</div>
-    <div class="sout-btn-group">
-        <button type="submit"><a href="/soutr" class="detail-submit-btn">Yes, Want to Delete</a></button>
-        <button type="submit"><a href="/" class="detail-submit-btn">No, Let me back</a></button>
+    <div class="Banner">Diasbled your account temporarily!! ,{{USER_NAME}}!!</div>
+    <div class="back-btn">
+        <button type="submit"><a href="/" class="detail-submit-btn">Back to Home</a></button>
     </div>
-    
 </body>
 </html>

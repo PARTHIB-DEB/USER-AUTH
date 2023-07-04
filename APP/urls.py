@@ -5,8 +5,14 @@ urlpatterns = [
     
     # Maybe one more HTML PAGE for seperately filling USER DETAILS --> Convert it into ROOT PATH
     
-    path("",signin,name="SIGNIN"),
-    path("s-out",signout,name="SIGNIN"),
-    path("l-in",login,name="SIGNIN"),
-    path("l-out",logout,name="SIGNIN"),
+    path("",rootPage,name="root"),
+    path("sin/",signIn,name="sin"),
+    path("dob/",DoB,name="dob"),
+    path("sinr/",sinRes,name="sinr"),
+    path("sout/",signOut,name="sout"),
+    path("soutr/",soutRes,name="soutr"),
+    path("lin/",logIn,name="lin"),
+    path("linr/",linRes,name="linr"),
+    path("lout/",logOut,name="lout"),
+    path("loutr/",loutRes,name="loutr"),
 ]

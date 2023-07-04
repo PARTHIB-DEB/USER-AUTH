@@ -1,16 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in user</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fill Details</title>
+    <style>
+        .Banner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 800;
+            font-size: xx-large;
+            margin-top:5vw;
+            text-decoration: underline;
+        }
+
+        .attr-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0vh 4rem;
+        }
+
+        #container-same{
+            margin-top: 2.5rem;
+        }
+
+        .detail-submit-btn{
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
 </head>
+
 <body>
-    <h1>SIGNING USER IN</h1>
+    <div class="Banner">User Details</div>
     <form action="/" method="post">
-        {% csrf_token %}
-        {% comment %} {{form}} {% endcomment %}
-        <button type="submit">submit</button>
+        <div class="attr-container">
+            <div class="user-name" id="container-same">
+                <label for="username" name="username" class="username">Username :
+                </label>
+                <input type="text" name="username" class="username" placeholder="Your username" />
+            </div>
+            <div class="user-Firstname" id="container-same">
+                <label for="first_name" name="first_name" class="first_name">First Name :
+                </label>
+                <input type="text" name="first_name" class="first_name" placeholder="Your First Name" />
+            </div>
+            <div class="user-Lastname" id="container-same">
+                <label for="last_name" name="last_name" class="last_name">Last Name :
+                </label>
+                <input type="text" name="last_name" class="last_name" placeholder="Your Last Name" />
+            </div>
+            <div class="user-email" id="container-same">
+                <label for="email" name="email" class="email">Email : </label>
+                <input type="email" name="email" class="email" placeholder="Your Email" />
+            </div>
+            <div class="user-password" id="container-same">
+                <label for="password" name="password" class="password">Password :
+                </label>
+                <input type="password" name="password" class="password" placeholder="Your password" />
+            </div>
+            <button type="submit" id="container-same"><a href="/dob" class="detail-submit-btn">Submit details</a></button>
+        </div>
     </form>
 </body>
+
 </html>
