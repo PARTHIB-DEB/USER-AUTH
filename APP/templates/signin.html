@@ -25,7 +25,7 @@
         }
 
         #container-same{
-            margin-top: 2.5rem;
+            margin-top: 2.2rem;
         }
 
         .detail-submit-btn{
@@ -65,7 +65,12 @@
                 </label>
                 {{form.password}}
             </div>
-            <button type="submit" id="container-same"><a href="/dob" class="detail-submit-btn">Submit details</a></button>
+            <div class="user-dob" id="container-same">
+                <label for="user-dob" name="Date_of_Birth" class="DOB">Date of Birth :
+                </label>
+                {{Dob.Date_of_Birth}}
+            </div>
+            <button type="submit" id="container-same"><a href="/sinr" class="detail-submit-btn">Submit details</a></button>
         </div>
     </form>
 </body>

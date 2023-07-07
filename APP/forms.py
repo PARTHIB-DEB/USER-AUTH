@@ -17,5 +17,5 @@ class Signform(UserCreationForm):
 class Dobform(ModelForm): 
     class Meta:
         model = Person   
-        fields = '__all__' 
+        fields = ['Date_of_Birth']
         
