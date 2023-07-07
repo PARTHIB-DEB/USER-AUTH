@@ -17,5 +17,5 @@ class Signform(UserCreationForm):
 class Dobform(ModelForm): 
     class Meta:
         model = Person   
-        fields = '__all__'  # All attributes of 'Person' model are necessary to fill
+        fields = '__all__' 
         
