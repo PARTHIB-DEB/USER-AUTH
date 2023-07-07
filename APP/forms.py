@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 class Signform(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username','password','email','first_name','last_name']  # All attributes of 'user' model and thus 'user' model are necessary to fill
+        fields = ['username','password','email','first_name','last_name']  
 
 # Have to create another version of UserCreationForm for Login
 # fields = ['username','password']
