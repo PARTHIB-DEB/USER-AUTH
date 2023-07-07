@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from APP.forms import *
 from django.contrib.auth.models import User
+from APP.models import *
 
 # Create your views here.
 
@@ -12,6 +13,12 @@ def signIn(request):  # Function for Signing NEW USER
     # Individual logic for --
     # 1) 'User' object (username, firstname,lastname,password,email) MAYBE A DIFFERENT PAGE NEEDED!!
     # 2) 'Person' object (Date of birth)
+    if request.method == "POST":
+        form=Userform(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form=Userform()
     return render(request,"signIn.html")
 
 def DoB(request): # Function for providing Date of birth of a specific person
@@ -22,6 +29,7 @@ def DoB(request): # Function for providing Date of birth of a specific person
 
 
 def sinRes(request):  # Throwing a response page that new account has been created successfully!!
+    
     return render (request,"sinRes.html")
 
 

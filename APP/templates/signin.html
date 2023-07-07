@@ -38,7 +38,8 @@
 
 <body>
     <div class="Banner">User Details</div>
-    <form action="/" method="post">
+    <form method="post">
+        {% csrf_token %}
         <div class="attr-container">
             <div class="user-name" id="container-same">
                 <label for="username" name="username" class="username">Username :
@@ -64,7 +65,12 @@
                 </label>
                 <input type="password" name="password" class="password" placeholder="Your password" />
             </div>
-            <button type="submit" id="container-same"><a href="/dob" class="detail-submit-btn">Submit details</a></button>
+            <div class="user-dob" id="container-same">
+                <label for="user-dob" name="Date_of_Birth" class="DOB">Date of Birth :
+                </label>
+                <input type="date" name="Date_of_Birth" class="DOB" pattern="\d{4}-\d{2}-\d{2}" />
+            </div>
+            <button type="submit" id="container-same"><a href="/sinr" class="detail-submit-btn">Submit details</a></button>
         </div>
     </form>
 </body>

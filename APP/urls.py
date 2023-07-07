@@ -7,7 +7,7 @@ urlpatterns = [
     
     path("",rootPage,name="root"),
     path("sin/",signIn,name="sin"),
-    path("dob/",DoB,name="dob"),
+    # path("dob/",DoB,name="dob"),
     path("sinr/",sinRes,name="sinr"),
     path("sout/",signOut,name="sout"),
     path("soutr/",soutRes,name="soutr"),
