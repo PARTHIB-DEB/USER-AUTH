@@ -1,16 +1,21 @@
 from django.forms import ModelForm
 from APP.models import *
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 # Creating MODELFORM for 'user' object at first, to put details on the form page
-class Userform(ModelForm):
+class Signform(UserCreationForm):
     class Meta:
         model = User
-        fields = '__all__'  # All attributes of 'user' model and thus 'user' model are necessary to fill
+        fields = ['username','password','email','first_name','last_name']  # All attributes of 'user' model and thus 'user' model are necessary to fill
+
+# Have to create another version of UserCreationForm for Login
+# fields = ['username','password']
+
 
 # Creating a MODELFORM for 'person' model --
-class Personform(ModelForm): 
+class Dobform(ModelForm): 
     class Meta:
         model = Person   
-        fields = '__all__'  # All attributes of 'Person' model and thus 'user' model are necessary to fill
+        fields = '__all__'  # All attributes of 'Person' model are necessary to fill
         

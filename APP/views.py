@@ -10,22 +10,39 @@ def rootPage(request):
 
 
 def signIn(request):  # Function for Signing NEW USER
-    # Individual logic for --
-    # 1) 'User' object (username, firstname,lastname,password,email) MAYBE A DIFFERENT PAGE NEEDED!!
-    # 2) 'Person' object (Date of birth)
+    form=Signform()  # Creating an empty form (for requests apart from POST)
     if request.method == "POST":
-        form=Userform(request.POST)
+        form=Signform(request.POST)
+        username=request.POST['username']
+        first_name=request.POST['first_name']
+        last_name=request.POST['last_name']
+        email=request.POST['email']
+        password=request.POST['password']
         if form.is_valid():
             form.save()
-    else:
-        form=Userform()
-    return render(request,"signIn.html")
+            form.cleaned_data['username']
+            form.cleaned_data['first_name']
+            form.cleaned_data['last_name']
+            form.cleaned_data['email']
+            form.cleaned_data['password']
+        User.objects.create(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
+    context={"form":form}
+    return render(request,"signIn.html",context)
 
 def DoB(request): # Function for providing Date of birth of a specific person
-    
-    # Get the User's username atfirst from the signin function [by dict or any DS format] then apply this function upon it
-    
-    return render(request,"Dob.html")
+    form=Dobform() # Creating an empty form (for requests apart from POST)
+    # As there is some error in Dobform so User object will create only after putting the dob form, means it is dependent on Dob
+    # As User is has a foreignkey relationship with Person's Dob (See model.py)
+    # Otherwise no fault in Signin function or Signform
+    if request.method == "POST":
+        form=Dobform(request.POST)
+        Date_of_Birth=request.POST['Date_of_Birth']
+        if form.is_valid():
+            form.save()
+            form.cleaned_data['Date_of_Birth']
+        Person.objects.create(Date_of_Birth=Date_of_Birth)
+    context={"form":form}
+    return render(request,"Dob.html",context)
 
 
 def sinRes(request):  # Throwing a response page that new account has been created successfully!!

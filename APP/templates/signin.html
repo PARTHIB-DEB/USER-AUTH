@@ -44,33 +44,28 @@
             <div class="user-name" id="container-same">
                 <label for="username" name="username" class="username">Username :
                 </label>
-                <input type="text" name="username" class="username" placeholder="Your username" />
+                {{form.username}}
             </div>
             <div class="user-Firstname" id="container-same">
                 <label for="first_name" name="first_name" class="first_name">First Name :
                 </label>
-                <input type="text" name="first_name" class="first_name" placeholder="Your First Name" />
+                {{form.first_name}}
             </div>
             <div class="user-Lastname" id="container-same">
                 <label for="last_name" name="last_name" class="last_name">Last Name :
                 </label>
-                <input type="text" name="last_name" class="last_name" placeholder="Your Last Name" />
+                {{form.last_name}}
             </div>
             <div class="user-email" id="container-same">
                 <label for="email" name="email" class="email">Email : </label>
-                <input type="email" name="email" class="email" placeholder="Your Email" />
+                {{form.email}}
             </div>
             <div class="user-password" id="container-same">
                 <label for="password" name="password" class="password">Password :
                 </label>
-                <input type="password" name="password" class="password" placeholder="Your password" />
+                {{form.password}}
             </div>
-            <div class="user-dob" id="container-same">
-                <label for="user-dob" name="Date_of_Birth" class="DOB">Date of Birth :
-                </label>
-                <input type="date" name="Date_of_Birth" class="DOB" pattern="\d{4}-\d{2}-\d{2}" />
-            </div>
-            <button type="submit" id="container-same"><a href="/sinr" class="detail-submit-btn">Submit details</a></button>
+            <button type="submit" id="container-same"><a href="/dob" class="detail-submit-btn">Submit details</a></button>
         </div>
     </form>
 </body>
