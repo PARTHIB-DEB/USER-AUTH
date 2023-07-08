@@ -38,38 +38,45 @@
 
 <body>
     <div class="Banner">User Details</div>
-    <form method="post">
+    <form method="POST" action=".">
         {% csrf_token %}
-        <div class="attr-container">
+        {% comment %} <div class="attr-container">
             <div class="user-name" id="container-same">
                 <label for="username" name="username" class="username">Username :
                 </label>
-                {{form.username}}
+                {{User_form.username}}
             </div>
             <div class="user-Firstname" id="container-same">
                 <label for="first_name" name="first_name" class="first_name">First Name :
                 </label>
-                {{form.first_name}}
+                {{User_form.first_name}}
             </div>
             <div class="user-Lastname" id="container-same">
                 <label for="last_name" name="last_name" class="last_name">Last Name :
                 </label>
-                {{form.last_name}}
+                {{User_form.last_name}}
             </div>
             <div class="user-email" id="container-same">
                 <label for="email" name="email" class="email">Email : </label>
-                {{form.email}}
+                {{User_form.email}}
             </div>
             <div class="user-password" id="container-same">
-                <label for="password" name="password" class="password">Password :
+                <label for="password" name="password1" class="password">Password :
                 </label>
-                {{form.password}}
+                {{User_form.password1}}
+            </div>
+            <div class="user-password" id="container-same">
+                <label for="password" name="password2" class="password">Confirm Password :
+                </label>
+                {{User_form.password2}}
             </div>
             <div class="user-dob" id="container-same">
                 <label for="user-dob" name="Date_of_Birth" class="DOB">Date of Birth :
                 </label>
-                {{Dob.Date_of_Birth}}
-            </div>
+                {{Dob_form.Date_of_Birth}}
+            </div> {% endcomment %}
+            {{User_form.as_p}}
+            {{Dob_form.as_p}}
             <button type="submit" id="container-same"><a href="/sinr" class="detail-submit-btn">Submit details</a></button>
         </div>
     </form>

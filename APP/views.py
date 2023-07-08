@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from APP.forms import *
 from django.contrib.auth.models import User
 from APP.models import *
@@ -11,42 +11,32 @@ def rootPage(request):
 
 
 def signIn(request):  # Function for Signing NEW USER
-    form = Signform()  # Creating an empty form (for requests apart from POST)
-    Dob_details = Dobform() # Creating an empty form (for requests apart from POST)
+    User_form = Signform()
+    Dob_form = Dobform()
     if request.method == "POST":
-        form = Signform(request.POST)
-        Dob_details = Dobform(request.POST)
-        # username = request.POST["username"]
-        # first_name = request.POST["first_name"]
-        # last_name = request.POST["last_name"]
-        # email = request.POST["email"]
-        # password = request.POST["password"]
-        # Date_of_Birth = request.POST["Date_of_Birth"]
-        if form.is_valid() and Dob_details.is_valid():
-            Personals = form.save()
-            DateOfBirth = Dob_details.save()
-            DateOfBirth.Personal_details = Personals
-            form.cleaned_data["username"]
-            form.cleaned_data["first_name"]
-            form.cleaned_data["last_name"]
-            form.cleaned_data["email"]
-            form.cleaned_data["password"]
-            Dob_details.cleaned_data["Date_of_Birth"]
-        # obj = User.objects.create(
-        #     username=username,
-        #     first_name=first_name,
-        #     last_name=last_name,
-        #     email=email,
-        #     password=password,
-        # )
-        # Person.objects.create(Personal_details=obj, Date_of_Birth=Date_of_Birth)
-    context = {"form": form, "Dob": Dob_details}
+        User_form = Signform(request.POST)
+        Dob_form = Dobform(request.POST)
+        if User_form.is_valid() and Dob_form.is_valid():
+            Uformobj = User_form.save(commit=False)
+            Dobformobj = Dob_form.save(commit=False)
+            Dobformobj.Personal_details = Uformobj
+            User_obj = User.objects.create(
+                username=request.POST["username"],
+                email=request.POST["email"],
+                first_name=request.POST["first_name"],
+                last_name=request.POST["last_name"],
+                password=request.POST["password"],
+            )
+            Dob_object=Person.objects.create(
+                Personal_details=User_obj , Date_of_Birth=request.POST['Date_of_Birth']
+            )
+            return redirect("/sinr/")
+
+    context = {"User_form": User_form, "Dob_form": Dob_form}
     return render(request, "signIn.html", context)
 
 
-def sinRes(
-    request,
-):  # Throwing a response page that new account has been created successfully!!
+def sinRes(request):
     return render(request, "sinRes.html")
 
 

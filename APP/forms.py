@@ -7,15 +7,20 @@ from django.contrib.auth.forms import UserCreationForm
 class Signform(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username','password','email','first_name','last_name']  
+        fields = ['username','email','first_name','last_name','password1','password2',]
+        
+        
 
 # Have to create another version of UserCreationForm for Login
 # fields = ['username','password']
 
 
 # Creating a MODELFORM for 'person' model --
-class Dobform(ModelForm): 
+class Dobform(ModelForm):
+    Personal_details=Signform() 
     class Meta:
         model = Person   
-        fields = ['Date_of_Birth']
+        fields = ['Personal_details' , 'Date_of_Birth']
+        
+        
         
