@@ -11,30 +11,7 @@ def rootPage(request):
 
 
 def signIn(request):  # Function for Signing NEW USER
-    User_form = Signform()
-    Dob_form = Dobform()
-    if request.method == "POST":
-        User_form = Signform(request.POST)
-        Dob_form = Dobform(request.POST)
-        if User_form.is_valid() and Dob_form.is_valid():
-            Uformobj = User_form.save(commit=False)
-            Dobformobj = Dob_form.save(commit=False)
-            Dobformobj.Personal_details = Uformobj
-            User_obj = User.objects.create(
-                username=request.POST["username"],
-                email=request.POST["email"],
-                first_name=request.POST["first_name"],
-                last_name=request.POST["last_name"],
-                password=request.POST["password"],
-            )
-            Dob_object=Person.objects.create(
-                Personal_details=User_obj , Date_of_Birth=request.POST['Date_of_Birth']
-            )
-            return redirect("/sinr/")
-
-    context = {"User_form": User_form, "Dob_form": Dob_form}
-    return render(request, "signIn.html", context)
-
+    pass
 
 def sinRes(request):
     return render(request, "sinRes.html")
