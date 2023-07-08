@@ -38,7 +38,7 @@
 
 <body>
     <div class="Banner">User Details</div>
-    <form method="POST" action=".">
+    <form method="post">
         {% csrf_token %}
         <div class="attr-container">
             <div class="user-name" id="container-same">
@@ -70,7 +70,7 @@
                 </label>
                 {{form.password2}}
             </div>
-            <button type="submit" id="container-same"><a href="/sinr" class="detail-submit-btn">Submit details</a></button>
+            <button type="submit" id="container-same"><a href={% url 'sinr' %} class="detail-submit-btn">Submit details</a></button>
         </div>
     </form>
 </body>
