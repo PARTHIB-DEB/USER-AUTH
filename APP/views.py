@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-
+from django.contrib.auth.models import User
+from APP.form import *
 
 # Create your views here.
 def root(request):
