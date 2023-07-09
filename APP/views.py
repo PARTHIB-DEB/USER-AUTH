@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, HttpResponse
-from APP.forms import *
+from django.contrib.auth.models import User
 
 # Create your views here.
 def root(request):
