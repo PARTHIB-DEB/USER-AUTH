@@ -1,10 +1,10 @@
 from django.urls import path
-from APP.views import *
+from APP import views
 
 urlpatterns = [
-    path("",root,name="root"),
-    path("sin/<str:pk>/",register,name="sin"),
-    path("sout/<str:pk>/",signOut,name="sout"),
-    path("lin/<str:pk>/",logIn,name="lin"),
-    path("lout/<str:pk>/",logOut,name="lout"),
+    path("",views.root,name="root"),
+    path("sin/",views.register,name="sin"),
+    path("sout/",views.signOut,name="sout"),
+    path("lin/<str:pk>/",views.logIn,name="lin"),
+    path("lout/<str:pk>/",views.logOut,name="lout"),
 ]

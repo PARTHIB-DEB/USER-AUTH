@@ -30,22 +30,15 @@ class RegisterUserForm(forms.ModelForm):
             raise ValidationError(" Email Already Exist")
         return email
 
-    def passwords_validate(self):  # Validating password attribute
-        pass1 = self.cleaned_data["password1"]
-        pass2 = self.cleaned_data["password2"]
-
-        if pass1 and pass2 and pass1 != pass2:
-            raise ValidationError("Password don't match")
-        return pass1
-
     # Defining the Save method of RegisterUserForm
 
     def save(self, commit=True):
-        user = User.objects.create(
-            username=self.cleaned_data["username"],
-            email=self.cleaned_data["email"],
-            password=self.cleaned_data["password1"],
-            first_name=self.cleaned_data["first_name"],
-            last_name=self.cleaned_data["last_name"],
+        user = User.objects.create_user(
+            self.cleaned_data["username"],
+            self.cleaned_data["email"],
+            self.cleaned_data["password"],
         )
+        user.first_name=self.cleaned_data['first_name'],
+        user.last_name=self.cleaned_data['last_name'],
+        user.save()
         return user
