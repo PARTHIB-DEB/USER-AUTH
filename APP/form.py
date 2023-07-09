@@ -1,5 +1,4 @@
 from django import forms
-from APP.models import *
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
@@ -11,7 +10,7 @@ class RegisterUserForm(forms.ModelForm):
     # password2=forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = RegisterModel
+        model = User
         fields = "__all__"
 
     # Methods of Validating different attributes of RegisterModel/RegisterUserForm
