@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main page</title>
+    <style>
+        .Banner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 800;
+            font-size: xx-large;
+            margin:2vw 0vw;
+            text-decoration:underline;
+        }
+
+        .flex-btn-group-1 , .flex-btn-group-2{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            justify-content: space-evenly;
+        }
+
+        .btn-1 , .btn-2{
+            text-decoration: none;
+            color: black;
+        }
+
+        
+
+    </style>
+  </head>
+  <body>
+    <div class="Banner">Welcome User</div>
+    <div class="flex-btn-group-1">
+        <button type="submit"><a href="signIn.html" class="btn-1" target="_parent" name="sin">New User?</a></button>
+        <button type="submit"><a href="signOut.html" class="btn-1" target="_parent" name="sout">SignOut Here</a></button>
+    </div>
+    <div class="flex-btn-group-2">
+        <button type="submit"><a href="logIn.html" class="btn-2" target="_parent" name="lin">LogIn Here</a></button>
+        <button type="submit"><a href="logOut.html" class="btn-2" target="_parent" name="lout">LogOut Here</a></button>
+    </div>
+  </body>
+</html>

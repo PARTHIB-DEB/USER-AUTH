@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fill Details</title>
+    <style>
+        .Banner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 800;
+            font-size: xx-large;
+            margin-top:5vw;
+            text-decoration: underline;
+        }
+
+        .attr-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0vh 4rem;
+        }
+
+        #container-same{
+            margin-top: 2.5rem;
+        }
+
+        .detail-submit-btn{
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="Banner">Enter details to login</div>
+    <form action="/" method="post">
+        <div class="attr-container">
+            <div class="user-name" id="container-same">
+                <label for="username" name="username" class="username">Username :
+                </label>
+                {% comment %} <input type="text" name="username" class="username" placeholder="Your username" /> {% endcomment %}
+            </div>
+            <div class="user-password" id="container-same">
+                <label for="password" name="password" class="password">Password :
+                </label>
+                {% comment %} <input type="password" name="password" class="password" placeholder="Your password" /> {% endcomment %}
+            </div>
+            <button type="submit" id="container-same"><a href="/" class="detail-submit-btn">Get Response</a></button>
+            {% comment "FLASH MESSAGE" %}{% endcomment %}
+        </div>
+    </form>
+</body>
+
+</html>

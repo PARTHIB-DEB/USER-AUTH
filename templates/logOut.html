@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable Temporarily</title>
+    <style>
+        .Banner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 800;
+            font-size: xx-large;
+            margin-top:5vw;
+            text-decoration: underline;
+        }
+
+        .sout-btn-group{
+            display: flex;
+           justify-content: space-evenly;
+           margin-top: 4rem;
+        }
+
+        .detail-submit-btn{
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="Banner">Want to disable your account temporarily??</div>
+    <div class="sout-btn-group">
+        <button type="submit"><a href="/" class="detail-submit-btn">Yes, Disable It</a></button>
+        {% comment "FLASH MESSAGE" %}{% endcomment %}
+        <button type="submit"><a href="/" class="detail-submit-btn">No, Let me back</a></button>
+    </div>
+    
+</body>
+</html>
