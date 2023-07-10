@@ -15,6 +15,12 @@
             margin-top:5vw;
             text-decoration: underline;
         }
+        .attr-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0vh 4rem;
+      }
 
         .sout-btn-group{
             display: flex;
@@ -22,9 +28,17 @@
            margin-top: 4rem;
         }
 
-        .detail-submit-btn{
+        .detail-submit-btn , .Back-btn{
             text-decoration: none;
             color: black;
+            margin-top : 2rem;
+        }
+        
+        .No-sout{
+          margin-top: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
     </style>
@@ -32,10 +46,25 @@
 <body>
     <div class="Banner">Want to Delete Your account??</div>
     <div class="sout-btn-group">
-        <button type="submit"><a href="/" class="detail-submit-btn">Yes, Want to Delete</a></button>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="attr-container">
+        <div class="user-name" id="container-same">
+          <label for="username" name="username" class="username">Username :
+          </label>
+          <input
+            type="text"
+            name="username"
+            class="username"
+            placeholder="Your username"
+          />
+        </div>
+        <button type="submit" class="detail-submit-btn">Yes, Want to Delete</button>
         {% comment "FLASH MESSAGE" %}{% endcomment %}
-        <button type="submit"><a href="/" class="detail-submit-btn">No, Let me back</a></button>
-    </div>
-    
+      </div>
+    </form>
+  </div>
+  <div class="No-sout"><button type="submit"><a href="/" class="Back-btn">No, Let me back</a></button></div>
+
 </body>
 </html>

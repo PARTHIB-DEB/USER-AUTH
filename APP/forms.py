@@ -32,13 +32,3 @@ class RegisterUserForm(forms.ModelForm):
 
     # Defining the Save method of RegisterUserForm
 
-    def save(self, commit=True):
-        user = User.objects.create_user(
-            self.cleaned_data["username"],
-            self.cleaned_data["email"],
-            self.cleaned_data["password"],
-        )
-        user.first_name=self.cleaned_data['first_name'],
-        user.last_name=self.cleaned_data['last_name'],
-        user.save()
-        return user

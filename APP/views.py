@@ -1,8 +1,10 @@
 from django.contrib import messages
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.models import User
 
 # Create your views here.
+
+
 def root(request):
     return render(request,"rootPage.html")
 
@@ -18,13 +20,23 @@ def register(request):
         user.first_name=first_name
         user.last_name=last_name
         user.save()
-        return render(request,'rootPage.html')
+        messages.success(request,f"{username} , Your account has been created!!")
+        return redirect("/")
     else:
         return render(request, 'signIn.html')
 
 
 def signOut(request):
-    return HttpResponse("<h1>DELETE ACCOUNT</h1>")
+    if request.method == "POST":
+        uname=request.POST['username']
+        try:
+            User.objects.get(username=uname).delete()
+            messages.success(request,f"Object of username :{uname} is deleted!!")
+            return render(request,"rootPage.html")
+        except Exception as e :
+            messages.success(request,f"Object of Username {uname} Doesnot exists")
+            return render(request,"rootPage.html")
+    return render(request,"signOut.html")
 
 
 def logIn(request, pk):

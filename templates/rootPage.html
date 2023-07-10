@@ -29,12 +29,34 @@
             color: black;
         }
 
-        
+        .flash-message{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: rgb(21, 220, 153);
+          border: 2px solid navajowhite;
+          border-radius: 3rem;
+          margin-left:12rem;
+          margin-right:12rem;
+        }
 
+        .success-message{
+          font-size:large;
+          font-weight: bold;
+          font-family: 'Times New Roman', Times, serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 1vw 0vw;
+          color: black
+        }
     </style>
   </head>
   <body>
     <div class="Banner">Welcome User</div>
+    {% for message in messages %}
+    <div class="flash-message"><p class="success-message">{{message}}</p></div>
+    {% endfor %}
     <div class="flex-btn-group-1">
         <button type="submit"><a href="/sin" class="btn-1" target="_parent" name="sin">New User?</a></button>
         <button type="submit"><a href="/sout" class="btn-1" target="_parent" name="sout">SignOut Here</a></button>
