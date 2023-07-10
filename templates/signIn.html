@@ -12,7 +12,7 @@
         font-family: "Times New Roman", Times, serif;
         font-weight: 800;
         font-size: xx-large;
-        margin-top: 5vw;
+        margin-top: 2vw;
         text-decoration: underline;
       }
 
@@ -20,22 +20,60 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0vh 4rem;
+        margin: 0rem 4rem;
       }
 
       #container-same {
-        margin-top: 2.5rem;
+        margin-top: 2rem;
       }
 
       .detail-submit-btn {
         text-decoration: none;
         color: black;
       }
+
+      .flash-message{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: red;
+        border: 2px solid navajowhite;
+        border-radius: 3rem;
+        margin: 2rem 12rem 0rem 12rem;
+      }
+
+      .failure-message{
+        font-size:large;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1vw 0vw;
+        color: rgb(196, 184, 184);
+        margin-top: 1rem;
+      }
+
+      .Back-btn{
+          text-decoration: none;
+          color: black;
+          margin-top : 2rem;
+        }
+        
+        .No-sout{
+          margin-top: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
     </style>
   </head>
 
   <body>
     <div class="Banner">User Details</div>
+    {% for message in messages %}
+    <div class="flash-message"><p class="failure-message"><i>{{message}}</i></p></div>
+    {% endfor %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
       <div class="attr-container">
@@ -94,6 +132,7 @@
         </div>
         <button type="submit" class="detail-submit-btn" id="container-same">Submit details
         </button>
+        <div class="No-sout"><button type="submit"><a href="/" class="Back-btn">No, Let me back</a></button></div>
       </div>
     </form>
   </body>
