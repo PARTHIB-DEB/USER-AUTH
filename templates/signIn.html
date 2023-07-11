@@ -32,7 +32,7 @@
         color: black;
       }
 
-      .flash-message{
+      .flash-message {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -42,10 +42,10 @@
         margin: 2rem 12rem 0rem 12rem;
       }
 
-      .failure-message{
-        font-size:large;
+      .failure-message {
+        font-size: x-large;
         font-weight: bold;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: "Times New Roman", Times, serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -54,85 +54,59 @@
         margin-top: 1rem;
       }
 
-      .Back-btn{
-          text-decoration: none;
-          color: black;
-          margin-top : 2rem;
-        }
-        
-        .No-sout{
-          margin-top: 2rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+      .Back-btn {
+        text-decoration: none;
+        color: black;
+        margin-top: 2rem;
+      }
+
+      .No-sout {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     </style>
   </head>
 
   <body>
     <div class="Banner">User Details</div>
     {% for message in messages %}
-    <div class="flash-message"><p class="failure-message"><i>{{message}}</i></p></div>
+    <div class="flash-message">
+      <p class="failure-message"><i>{{message}}</i></p>
+    </div>
     {% endfor %}
     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+      {% csrf_token %}
       <div class="attr-container">
         <div class="user-name" id="container-same">
-          <label for="username" name="username" class="username"
-            >Username :
-          </label>
-          <input
-            type="text"
-            name="username"
-            class="username"
-            placeholder="Your username"
-          />
+          <label for="username" name="username" class="username">Username :</label>
+          <input type="text" name="username" class="username" placeholder="Your username"/>
         </div>
         <div class="user-Firstname" id="container-same">
-          <label for="first_name" name="first_name" class="first_name"
-            >First Name :
-          </label>
-          <input
-            type="text"
-            name="first_name"
-            class="first_name"
-            placeholder="Your First Name"
-          />
+          <label for="first_name" name="first_name" class="first_name">First Name :</label>
+          <input type="text" name="first_name" class="first_name" placeholder="Your First Name"/>
         </div>
         <div class="user-Lastname" id="container-same">
-          <label for="last_name" name="last_name" class="last_name"
-            >Last Name :
-          </label>
-          <input
-            type="text"
-            name="last_name"
-            class="last_name"
-            placeholder="Your Last Name"
-          />
+          <label for="last_name" name="last_name" class="last_name">Last Name :</label>
+          <input type="text" name="last_name" class="last_name" placeholder="Your Last Name"/>
         </div>
         <div class="user-email" id="container-same">
           <label for="email" name="email" class="email">Email : </label>
-          <input
-            type="email"
-            name="email"
-            class="email"
-            placeholder="Your Email"
-          />
+          <input type="email" name="email" class="email" placeholder="Your Email"/>
         </div>
         <div class="user-password" id="container-same">
-          <label for="password" name="password" class="password"
-            >Password :
-          </label>
-          <input
-            type="password"
-            name="password"
-            class="password"
-            placeholder="Your password"
-          />
+          <label for="password" name="password" class="password">Password :</label>
+          <input type="password" name="password" class="password" placeholder="Your password"/>
         </div>
-        <button type="submit" class="detail-submit-btn" id="container-same">Submit details
+        <button type="submit" class="detail-submit-btn" id="container-same">
+          Submit details
         </button>
-        <div class="No-sout"><button type="submit"><a href="/" class="Back-btn">No, Let me back</a></button></div>
+        <div class="No-sout">
+          <button type="submit">
+            <a href="/" class="Back-btn">No, Let me back</a>
+          </button>
+        </div>
       </div>
     </form>
   </body>
