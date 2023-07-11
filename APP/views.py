@@ -19,43 +19,27 @@ def register(request): # To Register a new Account
         password=request.POST['password']
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        # try:  # Validating Only based on Username!! Need some more individual Validations for some of the attributes
-        #     user=User.objects.create_user(username,email,password)
-        #     user.first_name=first_name
-        #     user.last_name=last_name
-        #     user.save()
-        #     messages.success(request,f" {username} , Your account has been created!!")
-        #     return redirect("/")
-        # except Exception:
-        #     messages.warning(request,f"Object of Username {username} Already exists")
-        #     return render(request,"signIn.html")
         try:
-            if username not in Logged_In:
-                try:
-                    if User.objects.filter(email=email , password=password).count()==0:
-                        try:
-                            # Caps='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-                            # smalls='abcdefghijklmnopqrstuvwxyz'
-                            # numbers='0123456789'
-                            # list_pass=list(password)
-                            # if len(list_pass)>=8 :
-                            #     for i in list_pass:
-                            #         if i in Caps and list_pass.count(i)<=2 and i in smalls and
-                            if len(password)>=8:
-                                user=User.objects.create_user(username,email,password)
-                                user.first_name=first_name
-                                user.last_name=last_name
-                                user.save()
-                                messages.success(request,f" {username} , Your account has been created!!")
-                                return redirect("/")
-                        except Exception:
-                            messages.warning(request,f"Password Length is Too short")
-                            return render(request,"signIn.html")
-                except Exception:
-                        messages.warning(request,f"This Email and Password are already enlisted by someone")
+           if User.objects.filter(email=email).count()==0:
+               if User.objects.filter(password=password).count==0:
+                   if len(password)>=8:
+                        user=User.objects.create_user(username,email,password)
+                        user.first_name=first_name                
+                        user.last_name=last_name
+                        user.save()
+                        messages.success(request,f" {username} , Your account has been created!!")
+                        return redirect("/")
+                   else:
+                        messages.error(request,"Short Password")
                         return render(request,"signIn.html")
+               else:
+                   messages.error(request,"Same Password!!")
+                   return render(request,"signIn.html")
+           else:
+               messages.error(request,"Same email")
+               return render(request,"signIn.html")
         except Exception:
-            messages.warning(request,f"Object of Username {username} Already exists")
+            messages.error(request,"USERNAME EXISTS")
             return render(request,"signIn.html")
     else:
         return render(request, 'signIn.html')
