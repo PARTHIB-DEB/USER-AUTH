@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 
-Logged_In=set() # Creating a set of Logged (means already Signed) Users , Its an alternative of Django-Signals 
+Logged_In=set() # Creating a set of Logged (means already Signed and ACTIVE ACCOUNT) Users , Its an alternative of Django-Signals 
                 # Here we can detect the users numbers by this LOCAL STORAGE
 
 def root(request): # Root Page of all operations
