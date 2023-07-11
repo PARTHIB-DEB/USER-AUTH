@@ -5,37 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disable Temporarily</title>
     <style>
-        .Banner{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: 800;
-            font-size: xx-large;
-            margin-top:5vw;
-            text-decoration: underline;
-        }
+      .Banner{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: 800;
+          font-size: xx-large;
+          margin-top:5vw;
+          text-decoration: underline;
+      }
+      .attr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0vh 4rem;
+    }
 
-        .sout-btn-group{
-            display: flex;
-           justify-content: space-evenly;
-           margin-top: 4rem;
-        }
+      .sout-btn-group{
+          display: flex;
+         justify-content: space-evenly;
+         margin-top: 4rem;
+      }
 
-        .detail-submit-btn{
-            text-decoration: none;
-            color: black;
-        }
+      .detail-submit-btn , .Back-btn{
+          text-decoration: none;
+          color: black;
+          margin-top : 2rem;
+      }
+      
+      .No-sout{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
+      .detail-submit-btn{
+        text-decoration: none;
+        color: black;
+    }
+
+    .flash-message{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #1a3622;
+        border-radius: 3rem;
+        margin: 2rem 12rem 0rem 12rem;
+      }
+
+      .failure-message{
+        font-size:large;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1vw 0vw;
+        color: rgb(255 255 255);
+        margin-top: 1rem;
+      }
+
+  </style>
     </style>
 </head>
 <body>
-    <div class="Banner">Want to disable your account temporarily??</div>
+    <div class="Banner">Want to Delete Your account??</div>
+    {% for message in messages %}
+    <div class="flash-message"><p class="failure-message">{{message}}</p></div>
+    {% endfor %}
     <div class="sout-btn-group">
-        <button type="submit"><a href="/" class="detail-submit-btn">Yes, Disable It</a></button>
-        {% comment "FLASH MESSAGE" %}{% endcomment %}
-        <button type="submit"><a href="/" class="detail-submit-btn">No, Let me back</a></button>
-    </div>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="attr-container">
+        <div class="user-name" id="container-same">
+          <label for="username" name="username" class="username">Username :
+          </label>
+          <input
+            type="text"
+            name="username"
+            class="username"
+            placeholder="Your username"
+          />
+        </div>
+        <button type="submit" class="detail-submit-btn">Yes, Want to Disable</button>
+      </div>
+    </form>
+  </div>
+  <div class="No-sout"><button type="submit"><a href="/" class="Back-btn">No, Let me back</a></button></div>
     
 </body>
 </html>

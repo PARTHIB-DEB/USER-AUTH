@@ -33,26 +33,64 @@
             color: black;
         }
 
+        .flash-message{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a3622;
+            border-radius: 3rem;
+            margin: 2rem 12rem 0rem 12rem;
+          }
+    
+          .failure-message{
+            font-size:large;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1vw 0vw;
+            color: rgb(255 255 255);
+            margin-top: 1rem;
+          }
+
+          .Back-btn{
+            text-decoration: none;
+            color: black;
+            margin-top : 2rem;
+          }
+          
+          .No-sout{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
     </style>
 </head>
 
 <body>
     <div class="Banner">Enter details to login</div>
-    <form action="/" method="post">
+    {% for message in messages %}
+    <div class="flash-message"><p class="failure-message">{{message}}</p></div>
+    {% endfor %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="attr-container">
             <div class="user-name" id="container-same">
                 <label for="username" name="username" class="username">Username :
                 </label>
-                {% comment %} <input type="text" name="username" class="username" placeholder="Your username" /> {% endcomment %}
+                <input type="text" name="username" class="username" placeholder="Your username" />
             </div>
             <div class="user-password" id="container-same">
                 <label for="password" name="password" class="password">Password :
                 </label>
-                {% comment %} <input type="password" name="password" class="password" placeholder="Your password" /> {% endcomment %}
+                <input type="password" name="password" class="password" placeholder="Your password" />
             </div>
-            <button type="submit" id="container-same"><a href="/" class="detail-submit-btn">Get Response</a></button>
-            {% comment "FLASH MESSAGE" %}{% endcomment %}
+            <button type="submit" id="container-same">Get Response</button>
         </div>
+        <div class="No-sout"><button type="submit"><a href="/" class="Back-btn">No, Let me back</a></button></div>
     </form>
 </body>
 

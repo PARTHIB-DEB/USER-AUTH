@@ -41,10 +41,34 @@
           align-items: center;
         }
 
+        .flash-message{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #1a3622;
+          border-radius: 3rem;
+          margin: 2rem 12rem 0rem 12rem;
+        }
+  
+        .failure-message{
+          font-size:large;
+          font-weight: bold;
+          font-family: 'Times New Roman', Times, serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 1vw 0vw;
+          color: rgb(255 255 255);
+          margin-top: 1rem;
+        }
+
     </style>
 </head>
 <body>
     <div class="Banner">Want to Delete Your account??</div>
+    {% for message in messages %}
+    <div class="flash-message"><p class="failure-message">{{message}}</p></div>
+    {% endfor %}
     <div class="sout-btn-group">
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -60,7 +84,6 @@
           />
         </div>
         <button type="submit" class="detail-submit-btn">Yes, Want to Delete</button>
-        {% comment "FLASH MESSAGE" %}{% endcomment %}
       </div>
     </form>
   </div>
