@@ -13,11 +13,11 @@ There are Total 4 functions here:
 1) Register new account (Signin)
 2) Activating one registered account (Login)
 3) Deactivating one registered account (Logout)
-4) Destroying a registered account (Sinout)
+4) Destroying a registered account (Signout)
 
 
 The relation is:
-Signin -> Login-> Logout -> Sinout
+Signin -> Login-> Logout -> Signout
    |                           ^
    |___________________________|
 '''
@@ -72,8 +72,9 @@ def register(request): # To Register a new Account
             return render(request,"signIn.html")
     else:
         return render(request, 'signIn.html')
+    
 
-def send_email(request ,sender_email,receiver_email):
+def send_email(request ,sender_email,receiver_email): # A custom function for send_mail()
     try:
         subject = "ACCCOUNT VERIFICATION"
         content = "If you find this mail then your account is verified,No click on http://127.0.0.1:8000/lin/"
