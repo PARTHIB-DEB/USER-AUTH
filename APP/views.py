@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.core.mail import send_mail
+from AUTH import  settings
 
 # Create your views here.
 
@@ -43,7 +45,7 @@ def register(request): # To Register a new Account
             
            if User.objects.filter(email=email).count()==0: #Checking the email
                
-               if User.objects.filter(password=password).count==0: # Checking the password
+               if User.objects.filter(password=password).count()==0: # Checking the password
                    
                    if len(password)>=8: # Verfications for every new password
                        
@@ -51,8 +53,10 @@ def register(request): # To Register a new Account
                         user.first_name=first_name                
                         user.last_name=last_name
                         user.save()
-                        messages.success(request,f" {username} , Your account has been created!!")
+                        send_email(request,settings.DEFAULT_FROM_EMAIL,[user.email])
+                        messages.success(request, f" {username} , Check Your mail to verify account")
                         return redirect("/")
+
                    else:
                         messages.error(request,"Password is too Short")
                         return render(request,"signIn.html")
@@ -63,11 +67,25 @@ def register(request): # To Register a new Account
                messages.error(request,"Email entered by someone before")
                return render(request,"signIn.html")
            
-        except Exception:
-            messages.error(request,"Username entered by someone before")
-            return render(request,"signIn.html")
+        except Exception as e:
+            # messages.error(request,"Username entered by someone before")
+            # return render(request,"signIn.html")
+            messages.error(request, e)
+            return render(request, "signIn.html")
     else:
         return render(request, 'signIn.html')
+
+def send_email(request ,sender_email,receiver_email):
+    try:
+        subject = "ACCCOUNT VERIFICATION"
+        content = "If you find this mail then your account is verified,No click on http://127.0.0.1:8000/lin/"
+        sender_email=sender_email
+        receiver_email=receiver_email
+        send_mail(subject, content, settings.DEFAULT_FROM_EMAIL, recipient_list=receiver_email, fail_silently=False)
+    except Exception as e:
+       messages.error(request,e)
+       return render(request, "rootPage.html")
+
 
 
 def signOut(request): # To Delete a Registered Account
@@ -101,7 +119,7 @@ def logIn(request): # To ACTIVATE a registered/authentic account
             if user is not None:
                 login(request, user)
                 Logged_In.add(username) # User REGISTERED account is ACTIVE so , his/her username got added in SET
-                messages.success(request,f"{username} you are logged in")
+                messages.success(request,f"{username} you are logged in and your account is registered also!!")
                 return render(request,"rootPage.html")
             else:
                 messages.error(request,f"Login Unsuccessful : Maybe username or password is WRONG!!")
