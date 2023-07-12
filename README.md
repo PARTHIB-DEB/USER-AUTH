@@ -10,5 +10,7 @@ A small project to check any user is authentic (either active or registered only
 
 **Database:** PostgreSQL
 
+## Screenshots
 
+![App Screenshot](https://pbs.twimg.com/media/F00Mzt4aMAATT5g?format=jpg&name=4096x4096)
 
