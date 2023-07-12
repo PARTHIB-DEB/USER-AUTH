@@ -68,10 +68,8 @@ def register(request): # To Register a new Account
                return render(request,"signIn.html")
            
         except Exception as e:
-            # messages.error(request,"Username entered by someone before")
-            # return render(request,"signIn.html")
-            messages.error(request, e)
-            return render(request, "signIn.html")
+            messages.error(request,"Username entered by someone before")
+            return render(request,"signIn.html")
     else:
         return render(request, 'signIn.html')
 
