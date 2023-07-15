@@ -10,7 +10,7 @@ A small project to check any user is authentic (either active or registered only
 
 **Database:** PostgreSQL
 
-## Screenshots
+## Views.py of APP
 
 ![Views.py of APP](https://pbs.twimg.com/media/F00O65sacAA9DyF?format=jpg&name=4096x4096)
 
