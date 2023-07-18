@@ -22,22 +22,22 @@ class UserViewSet(APIView):
 
     def put(self, request):  # If user wants to update a complete pack of data
         data=request.data
-        update_user=data['id']
-        user_datas=userSerializer(data=data)
+        user_obj=User.objects.get(username=data['username'])
+        user_datas=userSerializer(user_obj, data=data)
         if user_datas.is_valid():
-            user_datas.update(user_datas,data)
-            return Response({"Message":f"USER OF USERNAME: {update_user} IN WHOLE UPDATED!!!!"})
+            user_datas.save()
+            return Response({"Message":f"USER OF USERNAME: {data['username']} IN WHOLE UPDATED!!!!"})
         else:
             return Response(user_datas.errors)
         
 
     def patch(self, request):  # If user wants to update just a specific field of a packet of data
         data=request.data
-        update_user=data['username']
-        user_datas=userSerializer(data=data,partial=True)
+        user_obj=User.objects.get(username=data['username'])
+        user_datas=userSerializer(user_obj, data=data, partial=True)
         if user_datas.is_valid():
             user_datas.save()
-            return Response({"Message":f"ATTRIBUTE/S OF USER OF USERNAME: {update_user} UPDATED!!!!"})
+            return Response({"Message":f"USER OF USERNAME: {data['username']} IN WHOLE UPDATED!!!!"})
         else:
             return Response(user_datas.errors)
         
@@ -46,7 +46,7 @@ class UserViewSet(APIView):
         data=request.data
         delete_user=data['username']
         if delete_user!="*":
-            obj=User.objects.get(Farmer=delete_user).delete()
+            obj=User.objects.get(username=delete_user).delete()
             return Response({"Message":f"USER OF USERNAME : {delete_user} DELETED!!!!"})
         else:
             obj=User.objects.all().delete()
