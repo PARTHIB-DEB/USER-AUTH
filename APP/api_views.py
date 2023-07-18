@@ -37,7 +37,7 @@ class UserViewSet(APIView):
         user_datas=userSerializer(user_obj, data=data, partial=True)
         if user_datas.is_valid():
             user_datas.save()
-            return Response({"Message":f"USER OF USERNAME: {data['username']} IN WHOLE UPDATED!!!!"})
+            return Response({"Message":f"USER OF USERNAME: {data['username']} PARTIALLY / IN WHOLE UPDATED!!!!"})
         else:
             return Response(user_datas.errors)
         
