@@ -22,10 +22,10 @@ class UserViewSet(APIView):
 
     def put(self, request):  # If user wants to update a complete pack of data
         data=request.data
-        update_user=data['username']
+        update_user=data['id']
         user_datas=userSerializer(data=data)
         if user_datas.is_valid():
-            user_datas.save()
+            user_datas.update(user_datas,data)
             return Response({"Message":f"USER OF USERNAME: {update_user} IN WHOLE UPDATED!!!!"})
         else:
             return Response(user_datas.errors)
