@@ -137,4 +137,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'parthibkumardeb@gmail.com'
 EMAIL_HOST_PASSWORD = 'Parthib23!'
-DEFAULT_FROM_EMAIL = 'parthibkumardeb@gmail.com'

@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from AUTH import  settings
 
 class userSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,6 +30,14 @@ class userSerializer(serializers.ModelSerializer):
                         user_obj.first_name=first_name
                         user_obj.last_name=last_name
                         user_obj.save()
+                        try:
+                            subject = "ACCCOUNT VERIFICATION"
+                            content = "If you find this mail then your account is verified,No click on http://127.0.0.1:8000/lin/"
+                            sender_email=settings.EMAIL_HOST_USER
+                            receiver_email=email
+                            send_mail(subject, content, sender_email, recipient_list=receiver_email, fail_silently=True)
+                        except Exception as e:
+                            raise serializers.ValidationError('EMAIL NOT SENT')
                         return user_obj
                     else:
                         raise serializers.ValidationError('PASSWORD TOO SHORT')
@@ -35,8 +45,8 @@ class userSerializer(serializers.ModelSerializer):
                     raise serializers.ValidationError('PASSWORD ENTERED BY SOMEONE BEFORE')
             else:
                 raise serializers.ValidationError('EMAIL ENTERED BY SOMEONE BEFORE')
-        except Exception:
-            raise serializers.ValidationError('USERNAME ENTERED BY SOMEONE BEFORE')
+        except Exception as e:
+            raise serializers.ValidationError(e)
 
     def update(self, instance, validated_data): # For updation of an existing 'User' object
         

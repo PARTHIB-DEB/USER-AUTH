@@ -2,8 +2,6 @@ from django.contrib import messages
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from django.core.mail import send_mail
-from AUTH import  settings
 
 # Create your views here.
 
@@ -53,8 +51,6 @@ def register(request): # To Register a new Account
                         user.first_name=first_name                
                         user.last_name=last_name
                         user.save()
-                        send_email(request,settings.DEFAULT_FROM_EMAIL,[user.email])
-                        messages.success(request, f" {username} , Check Your mail to verify account")
                         return redirect("/")
 
                    else:
