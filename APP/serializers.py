@@ -18,6 +18,9 @@ class userSerializer(serializers.ModelSerializer):
         first_name = validated_data.pop('first_name')
         last_name=validated_data.pop('last_name')
         
+        
+        subject = f"ACCCOUNT VERIFICATION FOR {username}"
+        content = f"If you find this mail then your account is verified,No click on http://127.0.0.1:8000/lin/ \n\t Password :{password}"
         # Writing custom validations and creating Object of 'User' model
         
         try:
@@ -31,13 +34,9 @@ class userSerializer(serializers.ModelSerializer):
                         user_obj.last_name=last_name
                         user_obj.save()
                         try:
-                            subject = "ACCCOUNT VERIFICATION"
-                            content = "If you find this mail then your account is verified,No click on http://127.0.0.1:8000/lin/"
-                            sender_email=settings.EMAIL_HOST_USER
-                            receiver_email=email
-                            send_mail(subject, content, sender_email, recipient_list=receiver_email, fail_silently=True)
+                            send_mail(subject=subject, message=content, from_email="parthibkumardeb@gmail.com", recipient_list=[email], fail_silently=False)
                         except Exception as e:
-                            raise serializers.ValidationError('EMAIL NOT SENT')
+                            raise serializers.ValidationError(f'EMAIL NOT SENT FOR {e}')
                         return user_obj
                     else:
                         raise serializers.ValidationError('PASSWORD TOO SHORT')
